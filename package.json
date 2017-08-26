@@ -1,0 +1,33 @@
+{
+  "name": "install-peers-as-dev",
+  "version": "0.1.0",
+  "description": "Automatically installs project's peerDependencies as devDependencies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexindigo/install-peers-as-dev.git"
+  },
+  "keywords": [
+    "peerdependencies",
+    "peers",
+    "peerdeps",
+    "dev",
+    "devdeps",
+    "devdependencies",
+    "install",
+    "automatically",
+    "npm",
+    "nvm",
+    "local"
+  ],
+  "author": "Alex Indigo <iam@alexindigo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexindigo/install-peers-as-dev/issues"
+  },
+  "homepage": "https://github.com/alexindigo/install-peers-as-dev#readme"
+}
