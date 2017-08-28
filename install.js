@@ -5,7 +5,7 @@ var fs         = require('fs')
   , rootPath  = path.resolve(__dirname, '..', '..')
 
   , defaultPeerInstallOptions = {
-    'no-save': true
+    'save': false
   }
   ;
 
