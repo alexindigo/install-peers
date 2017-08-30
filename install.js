@@ -8,7 +8,11 @@ var fs          = require('fs')
   , envLabel    = 'skip_install_peers_as_dev'
 
   , defaultPeerInstallOptions = {
-    'save': false
+    'save': false,
+    'save-bundle': false,
+    'save-dev': false,
+    'save-optional': false,
+    'save-prod': false
   }
   ;
 
