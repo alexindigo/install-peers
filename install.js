@@ -1,8 +1,11 @@
-var fs         = require('fs')
-  , path       = require('path')
-  , installNpm = require('./install-npm.js')
+var fs          = require('fs')
+  , path        = require('path')
+  , installNpm  = require('./install-npm.js')
+  , installYarn = require('./install-yarn.js')
 
-  , rootPath  = path.resolve(__dirname, '..', '..')
+  , rootPath    = path.resolve(__dirname, '..', '..')
+
+  , envLabel    = 'skip_install_peers_as_dev'
 
   , defaultPeerInstallOptions = {
     'save': false
@@ -20,6 +23,16 @@ installPeerDeps();
 // --- Subroutines
 
 function installPeerDeps() {
+
+  // check for the "kill switch"
+  if (process.env[envLabel]) {
+    console.log('Skipping installing peerDependencies as devDependencies.');
+    return;
+  }
+
+  // yo, do not install peers while installing peers
+  process.env[envLabel] = '1';
+
   getPackageConfig(rootPath, function(config) {
     var peerDeps           = getPeerDeps(config)
       , peerInstallOptions = getPeerInstallOptions(config)
@@ -33,11 +46,22 @@ function installPeerDeps() {
     // ready to install, switch directories
     process.chdir(rootPath);
 
-    // TODO: Add alternatives
-    if (installNpm) {
-      installNpm(peerDeps, peerInstallOptions);
+    // TODO: Add more alternatives
+    // TODO: Handle `peerInstallOptions` for npm and yarn
+    if (installYarn) {
+      installYarn(peerDeps, peerInstallOptions, installDone.bind(null, 'yarn'));
+    } else if (installNpm) {
+      installNpm(peerDeps, peerInstallOptions, installDone.bind(null, 'npm'));
     }
   });
+}
+
+function installDone(tool) {
+
+  // cleanup env
+  process.env[envLabel] = '';
+
+  console.log('Installed peerDependencies as devDependencies via ' + tool + '.');
 }
 
 function getPeerDeps(config) {

@@ -1,7 +1,7 @@
 {
-  "name": "install-peers-as-dev",
-  "version": "0.1.1",
-  "description": "Automatically installs project's peerDependencies as devDependencies",
+  "name": "install-peers",
+  "version": "1.0.0",
+  "description": "Automatically installs project's peerDependencies (as devDependencies)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alexindigo/install-peers-as-dev.git"
+    "url": "git+https://github.com/alexindigo/install-peers.git"
   },
   "keywords": [
     "peerdependencies",
@@ -21,13 +21,17 @@
     "install",
     "automatically",
     "npm",
+    "yarn",
     "nvm",
     "local"
   ],
   "author": "Alex Indigo <iam@alexindigo.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/alexindigo/install-peers-as-dev/issues"
+    "url": "https://github.com/alexindigo/install-peers/issues"
   },
-  "homepage": "https://github.com/alexindigo/install-peers-as-dev#readme"
+  "homepage": "https://github.com/alexindigo/install-peers#readme",
+  "dependencies": {
+    "executioner": "^2.0.1"
+  }
 }
