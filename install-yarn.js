@@ -27,7 +27,6 @@ if (yarnModule) {
       packages: packages.map((pkg) => '"' + pkg + '"').join(' ')
     };
 
-    // executioner(packages, {}, {cmdPrefix: node + ' ' + yarnModule + ' add --peer --no-lockfile'}, function(error, result) {
     executioner('${node} ${yarn} add --peer --no-lockfile ${packages}', options, function(error, result) {
       if (error) {
         console.error('Unable to install peerDependencies', error);

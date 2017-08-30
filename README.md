@@ -1,21 +1,28 @@
 # install-peers
 
-Automatically installs project's peerDependencies (as devDependencies).
+Automatically installs project's peerDependencies (as devDependencies). Works with `npm`, `yarn` and `nvm`.
 
 ## Install
 
+### npm
+
 ```
-$ npm install --save-dev install-peers
+$ npm install --save-dev --ignore-scripts install-peers
+```
+
+### yarn
+
+```
+$ yarn add --dev --ignore-scripts install-peers
 ```
 
 ## Usage
 
-When saved as devDependency in your package, it will be installed for development installation,
-bringing along modules listed in your project's peerDependencies.
+Run `npm install` (or `yarn install`) to install `prod` and `dev`, as well as `peer` dependencies.
 
-It won't update lock (shrinkwrap) files or modify package.json, keeping your setup pure and clean.
+_You still may see "unmet peer dependency" warnings, due to installation flow of npm/yarn._
 
-Automatically works with `npm`, `yarn` and `nvm`.
+Also it won't update lock (shrinkwrap) files or modify package.json, keeping your setup pure and clean.
 
 ## License
 
