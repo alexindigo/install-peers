@@ -62,12 +62,13 @@ function installPeerDeps() {
   });
 }
 
-function installDone(tool) {
-
+function installDone(tool, result) {
   // cleanup env
   process.env[envLabel] = '';
 
   console.log('Installed peerDependencies as devDependencies via ' + tool + '.');
+
+  console.log(result);
 }
 
 function getPeerDeps(config) {
