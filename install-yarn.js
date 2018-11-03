@@ -10,7 +10,7 @@ if (process.env['npm_execpath'] && process.env['npm_execpath'].match(/node_modul
   var execPath = process.env['npm_execpath'];
   var expectedPath = path.join('yarn', 'bin', 'yarn.js');
 
-  if (execPath.slice(-expectedPath.length) === expectedPath) {
+  if (execPath.slice(-1 * expectedPath.length) === expectedPath) {
     yarnBin = path.resolve(execPath, '..', '..', 'lib', 'cli');
   }
 }

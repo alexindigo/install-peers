@@ -10,7 +10,7 @@ if (process.env['npm_execpath']) {
   var execPath = process.env['npm_execpath'];
   var expectedPath = path.join('bin', 'npm-cli.js');
 
-  if (execPath.slice(-expectedPath.length) === expectedPath) {
+  if (execPath.slice(-1 * expectedPath.length) === expectedPath) {
     npmBin = path.resolve(execPath);
   }
 }
