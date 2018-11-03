@@ -16,11 +16,15 @@ var fs          = require('fs')
   }
   ;
 
+console.dir(__dirname);
+
 // in npm@3+ preinstall happens in `node_modules/.staging` folder
 // so if we ended up in `node_modules/` jump one level up
 if (path.basename(rootPath) === 'node_modules') {
   rootPath = path.resolve(rootPath, '..');
 }
+
+console.dir(rootPath);
 
 installPeerDeps();
 
@@ -56,6 +60,8 @@ function installPeerDeps() {
       installYarn(peerDeps, peerInstallOptions, installDone.bind(null, 'yarn'));
     } else if (installNpm) {
       installNpm(peerDeps, peerInstallOptions, installDone.bind(null, 'npm'));
+    } else {
+      console.error('Did not find a viable package manager to install dependencies with.');
     }
   });
 }
