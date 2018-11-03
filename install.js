@@ -3,7 +3,7 @@ var fs          = require('fs')
   , installNpm  = require('./install-npm.js')
   , installYarn = require('./install-yarn.js')
 
-  , rootPath    = path.resolve(process.cwd(), '..', '..')
+  , rootPath    = process.env.INIT_CWD || path.resolve('../..', process.cwd())
 
   , envLabel    = 'skip_install_peers_as_dev'
 
