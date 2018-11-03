@@ -31,7 +31,6 @@ if (yarnBin) {
     };
 
     executioner('"${node}" "${yarn}" add --peer --no-lockfile ${packages}', options, function(error, result) {
-      console.dir(result);
       if (error) {
         console.error('Unable to install peerDependencies', error);
         process.exit(1);
