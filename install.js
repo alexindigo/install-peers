@@ -22,8 +22,6 @@ if (path.basename(rootPath) === 'node_modules') {
   rootPath = path.resolve(rootPath, '..');
 }
 
-console.dir(rootPath);
-
 installPeerDeps();
 
 // --- Subroutines

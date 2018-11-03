@@ -6,8 +6,14 @@ var yarnModule
   , node = process.argv[0]
   ;
 
-if (process.env['npm_execpath'] && process.env['npm_execpath'].match(/node_modules\/yarn\/bin\/yarn\.js$/)) {
-  yarnModule = path.resolve(process.env['npm_execpath'], '..', '..', 'lib', 'cli');
+if (process.env['npm_execpath']) {
+  if (process.platform === 'win32') {
+    process.env['npm_execpath'] = process.env['npm_execpath'].replace(/\\/g, '/');
+  }
+
+  if (process.env['npm_execpath'].match(/node_modules\/yarn\/bin\/yarn\.js$/)) {
+    yarnModule = path.resolve(process.env['npm_execpath'], '..', '..', 'lib', 'cli');
+  }
 }
 
 // if no yarn module found, don't expose any function
