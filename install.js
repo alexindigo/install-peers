@@ -3,7 +3,7 @@ var fs          = require('fs')
   , installNpm  = require('./install-npm.js')
   , installYarn = require('./install-yarn.js')
 
-  , rootPath    = path.resolve(__dirname, '..', '..')
+  , rootPath    = path.resolve(process.cwd(), '..', '..')
 
   , envLabel    = 'skip_install_peers_as_dev'
 
@@ -15,8 +15,6 @@ var fs          = require('fs')
     'save-prod': false
   }
   ;
-
-console.dir(__dirname);
 
 // in npm@3+ preinstall happens in `node_modules/.staging` folder
 // so if we ended up in `node_modules/` jump one level up
