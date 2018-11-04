@@ -3,7 +3,7 @@ var fs          = require('fs')
   , installNpm  = require('./install-npm.js')
   , installYarn = require('./install-yarn.js')
 
-  , rootPath    = path.resolve(__dirname, '..', '..')
+  , rootPath    = process.env.INIT_CWD || path.resolve(process.cwd(), '..', '..')
 
   , envLabel    = 'skip_install_peers_as_dev'
 
@@ -56,16 +56,19 @@ function installPeerDeps() {
       installYarn(peerDeps, peerInstallOptions, installDone.bind(null, 'yarn'));
     } else if (installNpm) {
       installNpm(peerDeps, peerInstallOptions, installDone.bind(null, 'npm'));
+    } else {
+      console.error('Did not find a viable package manager to install dependencies with.');
     }
   });
 }
 
-function installDone(tool) {
-
+function installDone(tool, result) {
   // cleanup env
   process.env[envLabel] = '';
 
   console.log('Installed peerDependencies as devDependencies via ' + tool + '.');
+
+  console.log(result);
 }
 
 function getPeerDeps(config) {

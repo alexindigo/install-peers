@@ -1,6 +1,6 @@
 {
   "name": "install-peers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Automatically installs project's peerDependencies (as devDependencies)",
   "main": "index.js",
   "scripts": {
