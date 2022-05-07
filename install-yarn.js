@@ -6,7 +6,7 @@ var yarnBin
   , node = process.argv[0]
   ;
 
-if (process.env['npm_execpath'] && process.env['npm_execpath'].match(/[\/\\]yarn(-.+)?[\/\\]bin[\/\\]yarn\.js$/)) {
+if (process.env['npm_execpath'] && process.env['npm_execpath'].match(/[\/\\]yarn(-v\d+\.\d+\.\d+)?[\/\\]bin[\/\\]yarn\.js$/)) {
   var execPath = process.env['npm_execpath'];
   yarnBin = path.resolve(execPath, '..', '..', 'lib', 'cli');
 }
