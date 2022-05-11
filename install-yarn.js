@@ -8,7 +8,10 @@ var yarnBin
 
 if (process.env['npm_execpath'] && process.env['npm_execpath'].match(/[\/\\]yarn(-v\d+\.\d+\.\d+)?[\/\\]bin[\/\\]yarn\.js$/)) {
   var execPath = process.env['npm_execpath'];
-  yarnBin = path.resolve(execPath, '..', '..', 'lib', 'cli');
+  var expectedPath = path.join('bin', 'yarn.js');
+  if (execPath.slice(-1 * expectedPath.length) === expectedPath) {
+    yarnBin = path.resolve(execPath, '..', '..', 'lib', 'cli');
+  }
 }
 
 // if no yarn module found, don't expose any function
